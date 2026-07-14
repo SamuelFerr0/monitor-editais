@@ -1,15 +1,5 @@
-const buscarAtualizacaoPF = require('./scraper');
-const { lerEstadoAnterior, salvarEstado, houveMudanca } = require('./compare');
+const notificar = require('./notify');
 
-async function testar() {
-  const atualizacaoNova = await buscarAtualizacaoPF();
-  const atualizacaoAntiga = lerEstadoAnterior();
-
-  console.log('Nova:', atualizacaoNova);
-  console.log('Antiga:', atualizacaoAntiga);
-  console.log('Mudou?', houveMudanca(atualizacaoNova, atualizacaoAntiga));
-
-  salvarEstado(atualizacaoNova);
-}
-
-testar();
+notificar('Teste do bot funcionando').then(() => {
+  console.log('Mensagem enviada!');
+});
